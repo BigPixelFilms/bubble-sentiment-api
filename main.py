@@ -5,7 +5,11 @@ from transformers import pipeline
 app = FastAPI(title="Bubble Sentiment API")
 
 # Load model once
-model = pipeline("sentiment-analysis")
+model = pipeline(
+    "sentiment-analysis",
+    model="distilbert-base-uncased-finetuned-sst-2-english",
+    device=-1
+)
 
 class TextInput(BaseModel):
     text: str
